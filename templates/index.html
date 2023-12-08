@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Smart Maple</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+        }
+
+        .container {
+            width: 80%;
+            margin: auto;
+            overflow: hidden;
+        }
+
+        #toggleGroupedData {
+            background: #333;
+            color: #fff;
+            padding: 10px 15px;
+            border: none;
+            cursor: pointer;
+            margin: 20px 0;
+        }
+
+        #groupedDataSection {
+            background: #fff;
+            padding: 20px;
+            border-radius: 5px;
+        }
+
+        h1, h2, h3, h4 {
+            color: #333;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        table, th, td {
+            border: 1px solid #ddd;
+        }
+
+        th, td {
+            padding: 10px;
+            text-align: left;
+        }
+
+        img {
+            max-width: 450px;
+            height: auto;
+        }
+    </style>
+</head>
+<body>
+<nav style="background-color: #333; color: white; padding: 10px; text-align: center;">
+    <a href="{% url 'home' %}" style="color: white; margin-right: 20px;">Ana Sayfa</a>
+    <a href="{% url 'read-me' %}" style="color: white; margin-right: 20px;">Read Me</a>
+</nav>
+
+<div class="container">
+    <h1>Smart Maple Python Ödevi</h1>
+    <form method="post" action="{% url 'home' %}">
+        {% csrf_token %}
+        <button type="submit" name="scraper">Veriyi Çek</button>
+    </form>
+
+    {% if path %}
+        <img src="{{ path }}" alt="Word Cloud" style="width:100%;">
+    {% endif %}
+
+    {% if bar_path %}
+        <img src="{{ bar_path }}" alt="Word Frequency Bar Chart" style="width:100%;">
+    {% endif %}
+
+    {% if stats %}
+        <h3>İstatistikler</h3>
+        <table>
+            <tr>
+                <th>İstatistik</th>
+                <th>Değer</th>
+            </tr>
+            {% for key, value in stats.items %}
+                <tr>
+                    <td>{{ key }}</td>
+                    <td>{{ value }}</td>
+                </tr>
+            {% endfor %}
+        </table>
+    {% endif %}
+
+    <button id="toggleGroupedData">Gruplanmış Verileri Göster/Gizle</button>
+    <div id="groupedDataSection" style="display:none;">
+        <h4>Grouped News by Update Date</h4>
+        {% for date, news_list in grouped_data %}
+            <h2>{{ date }}</h2>
+            <ul>
+                {% for news in news_list %}
+                    <li>{{ news.header }} - {{ news.summary }}</li>
+                {% endfor %}
+            </ul>
+        {% endfor %}
+    </div>
+</div>
+
+<script>
+    document.getElementById("toggleGroupedData").onclick = function () {
+        var section = document.getElementById("groupedDataSection");
+        if (section.style.display === "none") {
+            section.style.display = "block";
+        } else {
+            section.style.display = "none";
+        }
+    };
+</script>
+</body>
+<footer style="background-color: #f8f9fa; text-align: center; padding: 20px; position: fixed; bottom: 0; width: 100%;">
+    <p>Projenin GitHub <a href="https://github.com/yourusername/yourrepository">linki</a> için tıklayınız.</p>
+</footer>
+
+</html>

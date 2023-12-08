@@ -1,0 +1,23 @@
+version: '3.8'
+
+services:
+  web:
+    build: .  # Build the Dockerfile in the current directory
+    command: python manage.py runserver 0.0.0.0:8000  # Command to run
+    volumes:
+      - .:/usr/src/app  # Mount the project directory inside the container
+    ports:
+      - "8000:8000"  # Expose port 8000
+    depends_on:
+      - db
+
+  db:
+    image: mongo  # Use the official MongoDB image
+    ports:
+      - "27017:27017"  # Expose MongoDB on port 27017
+    volumes:
+      - mongodb_data:/data/db  # Persist MongoDB data
+
+# Define volumes
+volumes:
+  mongodb_data:

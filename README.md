@@ -20,9 +20,9 @@ NLTK veri setleri (kelime analizi için)
 Kurulum Adımları
 1)Projeyi klonlayın:
 
-git clone 
+git clone https://github.com/mustafaon01/scrape-and-analyses.git
 
-cd yourproject
+cd scrape-and-analyses
 
 2)Gerekli Python paketlerini yükleyin:
 
@@ -31,6 +31,12 @@ pip install -r requirements.txt
 3)Docker Compose ile uygulamayı ve MongoDB'yi başlatın:
 
 docker-compose up --build
+
+ya da MongoDB'yi başlatıp (Mac için brew services start mongodb-community) ;
+
+cd scrape-and-analyses
+
+python manage.py runserver
 
 # Kullanım
 Uygulama başlatıldıktan sonra, tarayıcınızda [localhost:8000](http://127.0.0.1:8000/) adresine giderek uygulamayı kullanabilirsiniz.

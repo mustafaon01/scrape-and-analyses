@@ -10,17 +10,23 @@ Bu projeyi çalıştırmadan önce aşağıdaki araçların yüklü olması gere
 
 Python 3.8 veya üzeri
 Docker ve Docker Compose (MongoDB ve uygulama konteynerleri için)
+
 NLTK veri setleri (kelime analizi için)
+
 Kurulum Adımları
 1)Projeyi klonlayın:
+
 git clone 
 cd yourproject
+
 2)Gerekli Python paketlerini yükleyin:
 
 pip install -r requirements.txt
+
 3)Docker Compose ile uygulamayı ve MongoDB'yi başlatın:
 
 docker-compose up --build
+
 # Kullanım
 Uygulama başlatıldıktan sonra, tarayıcınızda [localhost:8000](http://127.0.0.1:8000/) adresine giderek uygulamayı kullanabilirsiniz.
 

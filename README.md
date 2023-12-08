@@ -17,6 +17,7 @@ Kurulum Adımları
 1)Projeyi klonlayın:
 
 git clone 
+
 cd yourproject
 
 2)Gerekli Python paketlerini yükleyin:

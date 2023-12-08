@@ -15,7 +15,6 @@ Bu projeyi çalıştırmadan önce aşağıdaki araçların yüklü olması gere
 Python 3.8 veya üzeri
 Docker ve Docker Compose (MongoDB ve uygulama konteynerleri için)
 
-NLTK veri setleri (kelime analizi için)
 
 Kurulum Adımları
 1)Projeyi klonlayın:
@@ -24,9 +23,11 @@ git clone https://github.com/mustafaon01/scrape-and-analyses.git
 
 cd scrape-and-analyses
 
+
 2)Gerekli Python paketlerini yükleyin:
 
 pip install -r requirements.txt
+
 
 3)Docker Compose ile uygulamayı ve MongoDB'yi başlatın:
 
